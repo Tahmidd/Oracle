@@ -1,0 +1,61 @@
+1.
+create or replace function CheckPassword(pword users.upword%type)
+return boolean
+is 
+c int;
+begin
+c:=0;
+select count(*) into c from users where upword=pword;
+if c!=0 then
+return true;
+else
+return false;
+end if;
+end;
+
+
+2.
+
+create or replace function CheckID(id customers.u_id%type)
+return boolean
+is 
+c int;
+begin
+c:=0;
+select count(*) into c from customers where u_id=id;
+if c!=0 then
+return true;
+else
+return false;
+end if;
+end;
+
+3.
+create or replace function CheckUser(name customer.uname%type)
+return boolean
+is 
+c int;
+begin
+c:=0;
+select count(*) into c from customer where uname=name;
+if c!=0 then
+return true;
+else
+return false;
+end if;
+end;
+
+4.
+create or replace function CheckAdmin(aname users.name%type)
+return boolean
+is 
+c int;
+begin
+c:=0;
+select count(*) into c from users where name=aname;
+if c!=0 then
+return true;
+else
+return false;
+end if;
+end;

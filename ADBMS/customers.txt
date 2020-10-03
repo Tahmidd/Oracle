@@ -1,0 +1,5 @@
+CREATE TABLE customer (uid NUMBER(10) , uname VARCHAR(20), package VARCHAR(20), location VARCHAR(20),  PRIMARY KEY (uid))
+
+
+INSERT INTO customers VALUES(1212,'Rahman','2MBPS','Mirpur' )
+INSERT INTO customers VALUES(1122,'Mofiz','4MBPS','Uttara' )

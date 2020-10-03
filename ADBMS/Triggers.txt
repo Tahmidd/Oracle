@@ -1,0 +1,68 @@
+1. 
+create or replace trigger u_id
+before insert on customer
+for each row
+Begin
+if :new.u_id<0 then
+ Raise_application_error(-20115,'user id can not be negetive');
+else
+ dbms_output.put_line('insert Successfully');
+end if;
+end;
+
+
+2.
+create or replace trigger CheckUsername
+before insert on users
+for each row
+declare 
+c int;
+begin
+c:=0;
+select count(*) into c from users where name=:new.name;
+if c>0 then
+Raise_application_error(-20116,'UserName already taken');
+end if;
+end;
+
+3.
+create or replace trigger CheckEmail
+before insert on users
+for each row
+declare 
+c int;
+begin
+c:=0;
+select count(*) into c from users where uemail=:new.uemail;
+if c>0 then
+Raise_application_error(-20117,'This Email is already taken');
+end if;
+end;
+
+4. 
+create or replace trigger UserID
+before insert on customers
+for each row
+declare 
+c int;
+begin
+c:=0;
+select count(*) into c from customers where u_id=:new.u_id;
+if c>0 then
+Raise_application_error(-20118,'This User ID is already taken');
+end if;
+end;
+
+5. 
+create or replace trigger Username
+before insert on customer
+for each row
+declare 
+c int;
+begin
+c:=0;
+select count(*) into c from customers where uname=:new.uname;
+if c>0 then
+Raise_application_error(-20119,'This User Name is already taken');
+end if;
+end;
